@@ -30,12 +30,18 @@
 	        <div class="navbar-nav mr-auto">
 	          <a class="nav-item nav-link" href="{% url 'blog-home' %}">Home</a>
 	          <a class="nav-item nav-link" href="{% url 'blog-about' %}">About</a>
-	          <a class="nav-item nav-link" href="{% url 'blog-restaurants' %}">Restaurants</a>
+	          <a class="nav-item nav-link" href="{% url 'blog-restaurants1' %}">Restaurants</a>
 	        </div>
 	        <!-- Navbar Right Side -->
 	        <div class="navbar-nav">
-	          <a class="nav-item nav-link" href="{% url 'blog-login' %}">Login</a>
-	          <a class="nav-item nav-link" href="{% url 'signup' %}">Register</a>
+	        	{% if request.user.is_authenticated %}
+	        		<p>Hello, {{ request.user.username }}</p>
+	        		<a class="nav-item nav-link" href="{% url 'customers-logout' %}">Logout</a>
+
+	        	{% else %}
+	          <a class="nav-item nav-link" href="{% url 'customers-login' %}">Login</a>
+	          <a class="nav-item nav-link" href="{% url 'customers-register' %}">Register</a>
+	          {% endif %}
 	        </div>
 	      </div>
 	    </div>

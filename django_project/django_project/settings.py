@@ -31,8 +31,11 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+
+    'customers',
+
+
     'blog.apps.BlogConfig',
-    'users.apps.UsersConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -69,6 +72,8 @@ TEMPLATES = [
     },
 ]
 
+AUTH_USER_MODEL = 'customers.Customers'
+
 WSGI_APPLICATION = 'django_project.wsgi.application'
 
 
@@ -77,12 +82,8 @@ WSGI_APPLICATION = 'django_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'bhookay',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
-        'USER': 'root',
-        'PASSWORD': 'victor',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME' : BASE_DIR/ 'db.sqlite3',
     }
 }
 

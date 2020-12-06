@@ -36,6 +36,7 @@ class MyCustomersManager(BaseUserManager):
 		user.is_admin = True
 		user.is_active = True
 		user.is_superuser = True
+
 		user.save(using = self._db) 
 		return user
 
@@ -50,11 +51,13 @@ class Customers(AbstractBaseUser):
 	is_active = models.BooleanField(default = True)
 	is_staff = models.BooleanField(default = False)
 	is_superuser = models.BooleanField(default = False)
+
+	
 	address = models.CharField(max_length = 69, unique = False)
 	contact = models.IntegerField(unique = True)
 	
-	USERNAME_FIELD = 'username'
-	REQUIRED_FIELDS = [ 'email', 'address', 'contact']
+	USERNAME_FIELD = 'email'
+	REQUIRED_FIELDS = [ 'username', 'address', 'contact',]
 
 	objects = MyCustomersManager()
 
